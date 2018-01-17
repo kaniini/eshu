@@ -1,0 +1,11 @@
+DB_HOST = 'localhost'
+DB_USER = 'eshu'
+DB_PASSWORD = None
+DB_DATABASE = 'eshu'
+DB_ENDPOINT = 'postgresql://eshu@localhost/eshu'
+
+ALEMBIC_CONFIG = 'alembic.ini'
+
+SERVER_HOSTNAME = 'eshu.dereferenced.org'
+SERVER_SCHEME = 'https'
+
