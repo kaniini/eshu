@@ -9,3 +9,4 @@ ALEMBIC_CONFIG = 'alembic.ini'
 SERVER_HOSTNAME = 'eshu.dereferenced.org'
 SERVER_SCHEME = 'https'
 
+STATIC_DIR = '/home/eshu/eshu/eshu/static'
