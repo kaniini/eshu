@@ -135,5 +135,6 @@ class User(db.Model):
     account_id = db.Column(db.BigInteger(), db.ForeignKey('account.account_id'), nullable=False)
     passphrase = db.Column(db.Unicode(), nullable=False)
     email = db.Column(db.Unicode(), nullable=False)
+    email_verified = db.Column(db.Boolean(), nullable=False, default=False)
 
     account = relationship("Account")
