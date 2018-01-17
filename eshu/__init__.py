@@ -23,7 +23,7 @@ class RedisPool:
 
     async def get_redis_pool(self):
         if not self._pool:
-            self._pool = await aioredis.create_pool(app.config.REDIS_ENDPOINT)
+            self._pool = await aioredis.create_redis_pool(app.config.REDIS_ENDPOINT)
 
         return self._pool
 
