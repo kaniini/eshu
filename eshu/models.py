@@ -109,3 +109,13 @@ class Note(Activity, db.Model):
     summary = db.Column(db.Unicode(), nullable=True)
     content = db.Column(db.Text(), nullable=False)
     sensitive = db.Column(db.Boolean(), default=False, nullable=False)
+
+
+class User(db.Model):
+    __tablename__ = 'user'
+
+    user_id = db.Column(db.BigInteger(), primary_key=True)
+    account_id = db.Column(db.BigInteger(), db.ForeignKey('account.account_id'), nullable=False)
+    passphrase = db.Column(db.Unicode(), nullable=False)
+
+    account = relationship("Account")
