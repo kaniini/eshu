@@ -1,3 +1,6 @@
+import base64
+from Crypto.PublicKey import RSA
+from Crypto.Util.number import bytes_to_long, long_to_bytes
 from sqlalchemy.orm import relationship
 from . import db
 
@@ -46,6 +49,20 @@ class Account(db.Model):
     @property
     def is_local(self):
         return self.domain == None
+
+    @property
+    def magic_key(self):
+        try:
+            pkey = RSA.importKey(self.public_key)
+        except ValueError:
+            return None
+
+        parts = [
+            b'RSA',
+            base64.urlsafe_b64encode(long_to_bytes(pkey.n)),
+            base64.urlsafe_b64encode(long_to_bytes(pkey.e))
+        ]
+        return b'.'.join(parts)
 
 
 class Attachment(db.Model):
