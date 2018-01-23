@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block head %}
+{{ super() }}
+	<style type="text/css">
+		body {
+			background-color: #DADADA;
+		}
+
+		body > .grid {
+			height: 100%;
+		}
+
+		.image {
+			margin-top: -100px;
+		}
+
+		.column {
+			max-width: 450px;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="ui middle aligned center aligned grid">
+	<div class="column">
+		<form class="ui large form" method="POST">
+			<div class="ui stacked segment">
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="user icon"></i>
+						<input type="text" name="username" placeholder="{{ _("user.username") }}">
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="envelope icon"></i>
+						<input type="text" name="email" placeholder="{{ _("user.email") }}">
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="lock icon"></i>
+						<input type="password" name="password" placeholder="{{ _("user.password") }}">
+					</div>
+				</div>
+				<button type="submit" class="ui fluid large teal submit button">{{ _("user.create") }}</button>
+			</div>
+		</form>
+
+		<div class="ui message">
+			{{ _("user.already_have_account") }} <a href="{{ url_for('user.login') }}">{{ _("user.login") }}</a>.
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+	
