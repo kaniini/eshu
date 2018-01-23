@@ -15,7 +15,14 @@ db = Gino()
 db.init_app(app)
 
 
-jinja = SanicJinja2(app, pkg_name='eshu')
+from . import locale
+class EshuJinja(SanicJinja2):
+    # XXX - implement me for real
+    def fake_trans(self, text, *args, **kwargs):
+        return locale.translate(text, locale.DefaultLocale)
+
+
+jinja = EshuJinja(app, pkg_name='eshu')
 
 
 class RedisPool:
