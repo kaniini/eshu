@@ -3,7 +3,7 @@ import aioredis
 from sanic import Sanic
 from gino.ext.sanic import Gino
 
-from sanic_session import RedisSessionInterface
+from .aioredis_session import RedisSessionInterface
 from sanic_jinja2 import SanicJinja2
 
 
@@ -34,12 +34,12 @@ session = RedisSessionInterface(redispool.get_redis_pool)
 
 @app.middleware('request')
 async def add_session_to_request(request):
-    await session_interface.open(request)
+    await session.open(request)
 
 
 @app.middleware('response')
 async def save_session(request, response):
-    await session_interface.save(request, response)
+    await session.save(request, response)
 
 
 from . import models
